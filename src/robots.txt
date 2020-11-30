@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://ng-spacex-ssr.herokuapp.com/sitemap.xml
