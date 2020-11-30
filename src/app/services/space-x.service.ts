@@ -12,7 +12,10 @@ export class SpaceXService {
 
   getLaunches(filter: SearchFilter) {
     return this.http.get<SpaceXLaunch[]>(environment.api.launches, {
-      params: filterParams(filter),
+      params: {
+        limit: '100',
+        ...filterParams(filter),
+      },
     });
   }
 }
