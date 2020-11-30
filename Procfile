@@ -1,1 +1,1 @@
-web : node dist/spacex-ssr/server/main.js
+web: node dist/spacex-ssr/server/main.js
