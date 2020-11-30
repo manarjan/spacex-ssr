@@ -1,0 +1,65 @@
+<form class="filters" [formGroup]="launchFilterForm">
+  <div class="filters-heading">
+    <strong>Filters</strong>
+    <button class="btn" (click)="launchFilterForm.reset()">Clear</button>
+  </div>
+  <div class="filter-title">Launch Year</div>
+  <div class="filter-grid filter">
+    <ng-container *ngFor="let year of launchYears">
+      <input
+        type="radio"
+        name="launch_year"
+        formControlName="launch_year"
+        [id]="year"
+        hidden
+        [value]="year"
+      />
+      <label [for]="year" class="filter-label">{{ year }}</label>
+    </ng-container>
+  </div>
+  <br />
+  <div class="filter-title">Successful Launch</div>
+  <div class="filter-grid filter">
+    <input
+      type="radio"
+      name="launch_success"
+      formControlName="launch_success"
+      id="launch_success"
+      hidden
+      [value]="true"
+    />
+    <label for="launch_success" class="filter-label">True</label>
+    <input
+      type="radio"
+      name="launch_success"
+      formControlName="launch_success"
+      id="launch_fail"
+      hidden
+      [value]="false"
+    />
+    <label for="launch_fail" class="filter-label">False</label>
+  </div>
+  <br />
+  <div class="filter-title">Successful Landing</div>
+  <div class="filter-grid filter">
+    <input
+      type="radio"
+      name="land_success"
+      formControlName="land_success"
+      id="land_success"
+      hidden
+      [value]="true"
+    />
+    <label for="land_success" class="filter-label">True</label>
+    <input
+      type="radio"
+      name="land_success"
+      formControlName="land_success"
+      id="land_fail"
+      hidden
+      [value]="false"
+    />
+    <label for="land_fail" class="filter-label">False</label>
+    <br />
+  </div>
+</form>

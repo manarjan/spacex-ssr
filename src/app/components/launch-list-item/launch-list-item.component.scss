@@ -1,0 +1,16 @@
+@import "variables";
+.launch-card {
+  padding: 10px;
+  height: 100%;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 0.75em;
+  img {
+    width: 100%;
+    background-color: $clr_primary_bg;
+  }
+  .mission_title {
+    color: $clr_title;
+    margin-bottom: 5px;
+  }
+}

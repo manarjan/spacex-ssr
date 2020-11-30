@@ -1,0 +1,32 @@
+.filters {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  .filters-heading {
+    display: flex;
+    justify-content: space-between;
+  }
+  .filter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .filter-title {
+    text-align: center;
+    border-bottom: 1px solid rgba(black, 0.3);
+    margin: 0 2em 10px;
+  }
+  .filter {
+    .filter-label {
+      cursor: pointer;
+      padding: 5px;
+      text-align: center;
+      background-color: #c5df9b;
+      border-radius: 10px;
+    }
+    input[type="radio"]:checked + .filter-label {
+      background-color: #7aba00;
+    }
+  }
+}

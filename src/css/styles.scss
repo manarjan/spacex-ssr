@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "variables";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Nunito";
+  background-color: $clr_primary_bg;
+}
+
+.btn {
+  border: 2px solid black;
+  padding: 5px;
+  text-transform: uppercase;
+  background-color: transparent;
+  cursor: pointer;
+}

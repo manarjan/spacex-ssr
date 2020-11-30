@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/spacex-ssr",
+            "outputPath": "dist/spacex-ssr/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,8 +27,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/css/"]
+            },
             "styles": [
-              "src/styles.scss"
+              "src/css/styles.scss"
             ],
             "scripts": []
           },
@@ -90,8 +93,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/css/"]
+            },
             "styles": [
-              "src/styles.scss"
+              "src/css/styles.scss"
             ],
             "scripts": []
           }
@@ -102,7 +108,8 @@
             "tsConfig": [
               "tsconfig.app.json",
               "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "e2e/tsconfig.json",
+              "tsconfig.server.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -119,6 +126,53 @@
             "production": {
               "devServerTarget": "spacex-ssr:serve:production"
             }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/spacex-ssr/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "spacex-ssr:build",
+            "serverTarget": "spacex-ssr:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "spacex-ssr:build:production",
+              "serverTarget": "spacex-ssr:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "spacex-ssr:build:production",
+            "serverTarget": "spacex-ssr:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }

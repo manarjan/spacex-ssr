@@ -1,0 +1,23 @@
+<ng-container *ngIf="{ launches: launches$ | async } as data">
+  <ng-container *ngIf="spinner; else loaded">
+    <div class="spinner-container">
+      <div class="spinner"></div>
+    </div>
+  </ng-container>
+  <ng-template #loaded>
+    <ng-container *ngIf="data.launches?.length > 0; else noResult">
+      <div class="list-container">
+        <app-launch-list-item
+          [launch]="launch"
+          *ngFor="let launch of data.launches"
+        ></app-launch-list-item>
+      </div>
+    </ng-container>
+    <ng-template #noResult>
+      <div class="no-result">
+        <h5>No Results Found</h5>
+        <img src="assets/no-result.svg" />
+      </div>
+    </ng-template>
+  </ng-template>
+</ng-container>
