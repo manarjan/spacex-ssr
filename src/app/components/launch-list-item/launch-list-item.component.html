@@ -23,10 +23,10 @@
   </div>
   <div>
     <strong>Successful Launch:</strong>
-    {{ launch.launch_success ? "Yes" : "No" }}
+    {{ !!launch.launch_success }}
   </div>
   <div>
     <strong>Successful Landing:</strong>
-    {{ launch.launch_failure_details ? "No" : "Yes" }}
+    {{ !!launch.rocket?.first_stage?.cores[0]?.land_success }}
   </div>
 </div>
